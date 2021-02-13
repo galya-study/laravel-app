@@ -7,6 +7,16 @@
 @section('content')
 <h1>Страница контактов</h1>
 
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $er)
+                <li>{{ $er }}</li>
+            @endforeach    
+        </ul>
+    </div>
+@endif
+
 <form action="{{ route('contact-form') }}" method="post">
     @csrf
 
