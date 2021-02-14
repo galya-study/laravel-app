@@ -21,5 +21,12 @@ class ContactController extends Controller
         return redirect()->route('contact')->with('success', 'Сообщение было добавлено');
     }
 
+    public function allData()
+    {
+        $contact = new Contact();
+        // return view('messages', ['data' => $contact->orderBy('id', 'desc')->skip(1)->take(2)->get()]);
+        return view('messages', ['data' => $contact->where('subject', '<>', 'Второе сообщение')->get()]);
+    }
+
 
 }
